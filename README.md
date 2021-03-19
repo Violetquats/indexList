@@ -1,26 +1,22 @@
 # indexList
-"""
-Program goals:
-1. Get user input
-2. Convert the input to input
-3. Add input to list
-4. Full values from specific input positions
-"""
-#create functions that will perform those actions above
 myList = []
 import random
 def mainProgram():
     while True:
         try:
             print("Hello!")
-            print("Choose one of the following options. Type numbers ONLY!")
+            print("Choose one of the following options, but please only type numbers!")
             choice = input("""
-1. Add to list,
-2. Add a lot of numbers to your list,
+1. Add a single item to your list,
+2. Add a lot of randomized numbers to your list,
+
 3. Return the value at an index position,
+
 4. Print contents of list
+
 5. Random choice,
 6. Linear search,
+
 7. Exit the program  """)
             if choice == "1":
                 addToList()
@@ -61,11 +57,17 @@ def randomSearch():
     print(myList[random.randint(0, len(myList)-1)])
 
 def linearSearch():
-    print("We're gonna search every single item like a moron! WHOOO!")
+    print("This is a moronic way to search things, but it's fun! WHOOO!")
     searchItem = input("What do ya wanna find?"  )
+    indexes = []
+    indexCount = 0
     for x in range(len(myList)):
         if myList[x] == int(searchItem):
-            print("Your item is at index position {}".format(x))
+            indexes.append(x)
+            indexCount = indexCount + 1
+    print("Your item is at the index positions:")
+    print(indexes)
+    print("Your item appeared {} times in your list.".format(indexCount))
     
 
 if __name__ == "__main__":
