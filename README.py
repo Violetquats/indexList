@@ -1,5 +1,5 @@
-# indexList
 myList = []
+uniqueList = []
 import random
 def mainProgram():
     while True:
@@ -9,15 +9,12 @@ def mainProgram():
             choice = input("""
 1. Add a single item to your list,
 2. Add a lot of randomized numbers to your list,
-
 3. Return the value at an index position,
-
-4. Print contents of list
-
+4. Sort list,
 5. Random choice,
 6. Linear search,
-
-7. Exit the program  """)
+7. Print your lists,
+8. Exit the program  """)
             if choice == "1":
                 addToList()
             elif choice == "2":
@@ -25,11 +22,13 @@ def mainProgram():
             elif choice == "3":
                 indexValues()
             elif choice == "4":
-                print(myList)
+                sortList(myList)
             elif choice == "5":
                 randomSearch()
             elif choice == "6":
                 linearSearch()
+            elif choice == "7":
+                printLists()
             else:
                 break
         except:
@@ -52,6 +51,15 @@ def indexValues():
     indexPos = input("Which item position would you like to see?"  )
     print(myList[int(indexPos)])
 
+def sortList(myList):
+    for x in myList:
+        if x not in uniqueList:
+            uniqueList.append(x)
+    uniqueList.sort()
+    showMe = input("Would you like to see your unique values? Yes or No  ")
+    if showMe.lower() == "yes":
+        print(uniqueList)
+
 def randomSearch():
     print("Here's a random value from your list!  ")
     print(myList[random.randint(0, len(myList)-1)])
@@ -68,7 +76,16 @@ def linearSearch():
     print("Your item is at the index positions:")
     print(indexes)
     print("Your item appeared {} times in your list.".format(indexCount))
-    
+
+def printLists():
+    if len(uniqueList) == 0:
+        print(myList)
+    else:
+        whichOne = input("Which list--unique or all?  ")
+        if whichOne.lower == "unique":
+            print(uniqueList)
+        else:
+            print(myList)
 
 if __name__ == "__main__":
     mainProgram()
