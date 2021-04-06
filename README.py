@@ -2,12 +2,10 @@ myList = []
 uniqueList = []
 import random
 def mainProgram():
+    print("Choose one of the following options ")
     while True:
-        try:
-            print("Hello!")
-            print("Choose one of the following options, but please only type numbers!")
-            choice = input("""
-1. Add a single item to your list,
+        try:       
+            choice = input("""1. Add a single item to your list,
 2. Add a lot of randomized numbers to your list,
 3. Return the value at an index position,
 4. Sort list,
@@ -29,8 +27,12 @@ def mainProgram():
                 linearSearch()
             elif choice == "7":
                 printLists()
-            else:
+            elif choice == "8":
                 break
+            else:
+                print("""
+Please write an integer between 1 and 8. :D
+                      """)
         except:
             print("Uh oh! It looks like an error may have occured!")
         
