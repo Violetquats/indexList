@@ -11,9 +11,10 @@ def mainProgram():
 4. Sort list,
 5. Random choice,
 6. Linear search,
-7. Binary search
-8. Print your lists,
-9. Exit the program  """)
+7. Binary search,
+8. Iterative search,
+9. Print your lists,
+10. Exit the program  """)
             if choice == "1":
                 addToList()
             elif choice == "2":
@@ -30,12 +31,19 @@ def mainProgram():
                 binSearch = input("What are you looking for? ")
                 recursiveBinarySearch(uniqueList, 0, len(uniqueList)-1, int(binSearch))
             elif choice == "8":
-                printLists()
+                binSearch = input("What are you looking for? ")
+                result = iterativeBinarySearch(uniqueList, int(binSearch))
+                if result != -1:
+                    print("Your number is at position {}".format(result))
+                else:
+                    print("Uh oh. Your nuber isn't here :(")
             elif choice == "9":
+                printLists()
+            elif choice == "10":
                 break
             else:
                 print("""
-Please write an integer between 1 and 8. :D
+Please write an integer between 1 and 10. :D
                       """)
         except:
             print("Uh oh! It looks like an error may have occured!")
@@ -88,7 +96,7 @@ def recursiveBinarySearch(uniqueList, low, high, x):
         mid = (high + low) // 2
 
         if uniqueList[mid] == x:
-            print("Oh, what luck. Your number is at position {}".format(mid))
+            print("Found it! Your number is at position {}".format(mid))
         elif uniqueList[mid] > x:
             return recursiveBinarySearch(uniqueList, low, mid - 1, x)
         else:
@@ -106,6 +114,23 @@ def printLists():
             print(uniqueList)
         else:
             print(myList)
+
+def iterativeBinarySearch(uniqueList, x):
+    low = 0
+    high = len(uniqueList) - 1
+    mid = 0
+
+    while low <= high:
+        mid = (high + low) //2
+
+        if uniqueList[mid] < x:
+            low = mid +1
+
+        elif uniqueList[mid] > x:
+            high = mid -1
+        else:
+            return mid
+    return -1
 
 if __name__ == "__main__":
     mainProgram()
