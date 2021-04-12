@@ -5,46 +5,84 @@ def mainProgram():
     print("Choose one of the following options ")
     while True:
         try:       
-            choice = input("""1. Add a single item to your list,
-2. Add a lot of randomized numbers to your list,
-3. Return the value at an index position,
-4. Sort list,
-5. Random choice,
-6. Linear search,
-7. Binary search,
-8. Iterative search,
-9. Print your lists,
-10. Exit the program  """)
+            choice = input("""
+1. Edit your lsit
+2. Search your list
+3. Print your lists
+4. Exit the program
+""")
             if choice == "1":
-                addToList()
+                print("How would you like to edit your list?")
+                option = input("""
+1. Add a single item to your list,
+2. Add several randomized items to your list,
+3. Clear list,
+4. Back to main """)
+                while True:
+                    if option == "1":
+                        addToList()
+                        break
+                    elif option == "2":
+                        addManyItems()
+                        break
+                    elif option == "3":
+                        myList.clear()
+                        break
+                    elif option == "4":
+                        break
+                    else:
+                        print("Please write an integer between 1 and 4.")
+                        break
             elif choice == "2":
-                addManyItems()
+                print("What search method would you like to use?")
+                option = input("""
+1. Return the value at an index position,
+2. Sort list,
+3. Random choice,
+4. Linear search,
+5. Binary search,
+6. Iterative search
+7. Exit to main """)
+                while True:
+                    if option == "1":
+                        indexValues()
+                        break
+                    elif option == "2":
+                        sortList(myList)
+                        break
+                    elif option == "3":
+                        randomSearch()
+                        break
+                    elif option == "4":
+                        linearSearch()
+                        break
+                    elif option == "5":
+                        binSearch = input("What are you looking for? ")
+                        recursiveBinarySearch(uniqueList, 0, len(uniqueList)-1, int(binSearch))
+                        break
+                    elif option == "6":
+                        binSearch = input("What are you looking for? ")
+                        result = iterativeBinarySearch(uniqueList, int(binSearch))
+                        if result != -1:
+                            print("Your number is at position {}".format(result))
+                        else:
+                            print("Uh oh. Your nuber isn't here :(")
+                        break
+                    elif option == "7":
+                        break
+                    else:
+                        print("Please type an integer between 1 and 7. ")
+                        break
+            
             elif choice == "3":
-                indexValues()
-            elif choice == "4":
-                sortList(myList)
-            elif choice == "5":
-                randomSearch()
-            elif choice == "6":
-                linearSearch()
-            elif choice == "7":
-                binSearch = input("What are you looking for? ")
-                recursiveBinarySearch(uniqueList, 0, len(uniqueList)-1, int(binSearch))
-            elif choice == "8":
-                binSearch = input("What are you looking for? ")
-                result = iterativeBinarySearch(uniqueList, int(binSearch))
-                if result != -1:
-                    print("Your number is at position {}".format(result))
-                else:
-                    print("Uh oh. Your nuber isn't here :(")
-            elif choice == "9":
                 printLists()
-            elif choice == "10":
+
+            elif choice == "4":
                 break
+            
             else:
-                print("""
-Please write an integer between 1 and 10. :D
-                      """)
+                print("Please type an integer between 1 and 4. ")
+
         except:
             print("Uh oh! It looks like an error may have occured!")
         
