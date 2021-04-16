@@ -17,7 +17,8 @@ def mainProgram():
 1. Add a single item to your list,
 2. Add several randomized items to your list,
 3. Clear list,
-4. Back to main """)
+4. Learn what's behind the code,
+5. Back to main """)
                 while True:
                     if option == "1":
                         addToList()
@@ -29,6 +30,17 @@ def mainProgram():
                         myList.clear()
                         break
                     elif option == "4":
+                        print("""1. To add things to a list, we ask the user to type an integer.
+Once their integer is in as an input, we append myList by adding the new integer.
+Then we print the edited list for them.
+
+2. To add several items at once, we ask the user to define two variables.
+The first thing they are asked is how many integers they would like to add, followed by a question about the size of their range.
+
+3. To clear the list, we use a clear function. 
+""")
+                        break
+                    elif option == "5":
                         break
                     else:
                         print("Please write an integer between 1 and 4.")
@@ -42,7 +54,8 @@ def mainProgram():
 4. Linear search,
 5. Binary search,
 6. Iterative search
-7. Exit to main """)
+7. Learn about the options and what's behind the code
+8. Exit to main """)
                 while True:
                     if option == "1":
                         indexValues()
@@ -69,6 +82,13 @@ def mainProgram():
                             print("Uh oh. Your nuber isn't here :(")
                         break
                     elif option == "7":
+                        print("""1. To find a number at a certain index position, we start by asking the user what position they would like to see.
+Then we have a print statement set up to print the number in the index position that the user wanted to see.
+
+2. First, we set up a for loop so that the sorting program runs as many times as the user 
+""")
+                        break
+                    elif option == "8":
                         break
                     else:
                         print("Please type an integer between 1 and 7. ")
@@ -85,7 +105,7 @@ def mainProgram():
 
         except:
             print("Uh oh! It looks like an error may have occured!")
-        
+     
 def addToList():
     newItem = input("Please type an integer.  ")
     myList.append(int(newItem))
